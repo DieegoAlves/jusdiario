@@ -38,7 +38,7 @@ try {
 
 // Models
 User.initialize(sequelize);
-User.sync({ force: true });
+User.sync({ force: false });
 
 // Repositories
 const userRepository = new UserRepository(sequelize);

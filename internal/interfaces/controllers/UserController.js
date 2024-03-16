@@ -11,9 +11,13 @@ export default class UserController {
         }
 
         const requestUser = new UserRequestDTO(req.body);
-        const user = await this.userService.create(requestUser);
-        const responseUser = new UserResponseDTO(user);
+        try {
+            const user = await this.userService.create(requestUser);
+            const responseUser = new UserResponseDTO(user);
 
-        return res.status(201).json(responseUser);
+            return res.status(201).json(responseUser);
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
+        }
     }
 }

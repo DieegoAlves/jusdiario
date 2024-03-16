@@ -9,6 +9,16 @@ class UserRepository {
             throw error;
         }
     }
+
+    async findByEmail(email) {
+        try {
+            const user = await User.findOne({ where: { email } });
+            return user;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default UserRepository;
